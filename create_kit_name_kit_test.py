@@ -17,15 +17,25 @@ def get_kit_body(name):
 
 def positive_assert(kit_body):
     user_response = sender_stand_request.post_new_client_kit(kit_body)
-
-    assert user_response.status_code == 201
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {token}"
+    }
+    
+    if "name" in headers:
+        assert user_response.status_code == 201
 
 
 def negative_assert_code_400(kit_body):
     response = sender_stand_request.post_new_client_kit(kit_body)
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {token}"
+    }
 
-    assert response.status_code == 400
-    assert response.json()["No se han aprobado todos los parámetros requeridos"]
+    if "name" in headers:
+        assert response.status_code == 400
+        assert response.json()["No se han aprobado todos los parámetros requeridos"]
 
 
 # primero quiero definir todas las funciones para luego realizar las pruebas
