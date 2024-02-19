@@ -1,6 +1,7 @@
 import configuration
 import requests
 import data
+import json
 
 
 def post_new_user(body):
@@ -12,8 +13,12 @@ def post_new_user(body):
 
 def get_new_user_token():
     response = post_new_user(data.user_body)
-    json = response.json()
-    return json['authToken']
+    response_data = response.json()
+    return response_data['authToken']
+
+
+response1 = get_new_user_token()
+print(response1)
 
 
 def post_new_client_kit(body):
