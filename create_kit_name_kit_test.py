@@ -30,47 +30,55 @@ def negative_assert_code_400(kit_body): #función para la evaluación de las pru
     assert response.status_code == 400
 
 
-def test_create_kit_1_letter_in_name_kit_get_success_response():#prueba positiva con una letra en nombre del kit
+def test_kit_1_letter_in_name_success_response():
     dato =  data.tests[0]
     positive_assert(dato)
+#prueba positiva con una letra en nombre del kit
 
 
-def test_create_kit_511_letters_in_name_get_success_response():#prueba positiva con 511 letras en el nombre del kit
+def test_create_kit_511_letters_new_kit():
     dato = data.tests[1]
     positive_assert(dato)
+#prueba positiva con 511 letras en el nombre del kit
 
 
-def tests_create_kit_has_special_symbol_in_name_get_success_response():#prueba positiva con caracteres especiales en el nombre del kit
+def test_create_kit_0_character_new_kit():
     dato = data.tests[2]
-    positive_assert(dato)
+    negative_assert_code_400(dato)
+#prueba negativa sin nombre
 
 
-def test_create_kit_has_space_in_name_get_success_response():#prueba positiva con espacios en el nombre del kit
+def test_create_kit_512_letter_new_kit():
     dato = data.tests[3]
-    positive_assert(dato)
+    negative_assert_code_400(dato)
+#prueba negativa con 512 letras en el nombre del kit
 
 
-def test_create_kit_has_number_in_name_get_success_response():##prueba positiva con string de números en el nombre del kit
+def test_create_kit_special_characters_new_kit():
     dato = data.tests[4]
     positive_assert(dato)
+#prueba positiva con caracteres especiales en el nombre del kit
 
 
-def test_create_kit_has_no_name_get_error_response():#prueba negativa sin nombre
+def test_create_kit_space_new_kit():
     dato = data.tests[5]
-    negative_assert_code_400(dato)
+    positive_assert(dato)
+#prueba positiva con espacios en el nombre del kit
 
 
-def test_create_hit_has_512_letters_in_name_kit_get_error_response():#prueba negativa con 512 letras en el nombre del kit
+def test_create_kit_number_new_kit():
     dato = data.tests[6]
-    negative_assert_code_400(dato)
+    positive_assert(dato)
+#prueba positiva con string de números en el nombre del kit
 
 
-def test_create_kit_has_no_parameter_in_name_get_error_response():#prueba negativa con ningún parámetro
+def test_create_kit_no_parameter_new_kit():
     dato = data.tests[7]
     negative_assert_code_400(dato)
+#prueba negativa sin ningún parámetro
 
 
-def test_create_kit_has_different_parameter_in_name_kit_get_error_response():#prueba negativa con parámetros diferentes a sting en el nombre del kit
+def test_create_kit_different_parameter_new_kit():
     dato = data.tests[8]
     negative_assert_code_400(dato)
-
+#prueba negativa con parámetros diferentes a sting en el nombre del kit
